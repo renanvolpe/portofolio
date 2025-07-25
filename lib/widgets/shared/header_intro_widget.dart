@@ -56,8 +56,7 @@ class HeaderIntroWidget extends StatelessWidget {
                 children: [
                   for (int i = 0; i < listTechsModel.length; i++)
                     TechWidget(
-                      svgImage: listTechsModel[i].svgImage,
-                      text: listTechsModel[i].text,
+                      techModel: listTechsModel[i]
                     ),
                 ],
               ),

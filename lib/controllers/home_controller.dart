@@ -6,12 +6,11 @@ import '../utils/app_color.dart';
 class HomeController {}
 
 var listTechsModel = [
-  TechModel(svgImage: 'GitHub.svg', text: 'GitHub'),
-  TechModel(svgImage: 'GitHub.svg', text: 'Flutter'),
-  TechModel(svgImage: 'GitHub.svg', text: 'Dart'),
-  TechModel(svgImage: 'GitHub.svg', text: 'Python'),
-  TechModel(svgImage: 'GitHub.svg', text: 'Java'),
-  TechModel(svgImage: 'GitHub.svg', text: 'VsCode'),
+  TechModel(svgImage: 'GitHub.svg', text: 'GitHub', link: 'https://docs.github.com/'),
+  TechModel(svgImage: 'flutterio-icon.svg', text: 'Flutter', link: 'https://docs.flutter.dev/'),
+  TechModel(svgImage: 'Dart.svg', text: 'Dart', link: 'https://dart.dev/docs'),
+  TechModel(svgImage: 'Python.svg', text: 'Python', link: 'https://www.python.org/doc/'),
+  TechModel(svgImage: 'java.svg', text: 'Java', link: 'https://docs.oracle.com/en/java/'),
 ];
 
 //'assets/Vector-$i.png'
@@ -49,16 +48,18 @@ var listStacksModel = [
 var listSocialMedia = [
   SocialMediaModel(iconPath: 'assets/Vector-0.png', text: "LinkedIn", link: ''),
   SocialMediaModel(iconPath: 'assets/Vector-1.png', text: "Instagram", link: ''),
-  SocialMediaModel(iconPath: 'assets/Vector-0.png', text: "GitHub", link: ''),
-  SocialMediaModel(iconPath: 'assets/Vector-0.png', text: "E-mail", link: ''),
+  SocialMediaModel(iconPath: 'assets/Vector-2.png', text: "GitHub", link: ''),
+  SocialMediaModel(iconPath: 'assets/Vector-3.png', text: "E-mail", link: ''),
 ];
 
 class TechModel {
   String svgImage;
   String text;
+  String link;
   TechModel({
     required this.svgImage,
     required this.text,
+    required this.link,
   });
 }
 
