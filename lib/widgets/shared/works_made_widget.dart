@@ -6,6 +6,7 @@ import '../../controllers/home_controller.dart';
 import '../../utils/app_color.dart';
 import '../../utils/app_text_tyle.dart';
 import '../../utils/app_utils.dart';
+import 'image_works_widget.dart';
 
 class WorksMadeWidget extends StatelessWidget {
   const WorksMadeWidget({
@@ -15,7 +16,6 @@ class WorksMadeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.sizeOf(context).width;
-    final double spacing = 20;
     final int lengthEachLine = 3;
     return SizedBox(
       width: width * 0.7,
@@ -41,7 +41,7 @@ class WorksMadeWidget extends StatelessWidget {
                 mainAxisSpacing: spacing,
                 crossAxisSpacing: spacing,
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(), // if inside scroll view
+                physics: NeverScrollableScrollPhysics(),
                 itemCount: listEnterPriseModel.length,
                 itemBuilder: (context, i) {
                   final item = listEnterPriseModel[i];
@@ -55,15 +55,7 @@ class WorksMadeWidget extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ClipRRect(
-                          borderRadius: AppUtils.borderRadiusS,
-                          child: Image.asset(
-                            'assets/${item.path}',
-                            fit: BoxFit.cover,
-                            width: double.infinity,
-                            height: 150,
-                          ),
-                        ),
+                        ImageWorksWidget(path: item.path),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 6),
                           child: Column(
@@ -79,7 +71,11 @@ class WorksMadeWidget extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Text("Stacks trabalhadas", style: AppTextStyle.titleSm),
+                        Text(
+                          "Stacks trabalhadas",
+                          style: AppTextStyle.titleSm,
+                          textAlign: TextAlign.center,
+                        ),
                         const SizedBox(height: 10),
                         Wrap(
                           spacing: 10,
@@ -99,9 +95,5 @@ class WorksMadeWidget extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  _calculateRowSize(constraints, spacing) {
-    return constraints.maxWidth - (spacing * 2);
   }
 }

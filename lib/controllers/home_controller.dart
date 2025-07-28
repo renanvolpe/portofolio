@@ -79,6 +79,41 @@ Também adquiri experiência com a publicação de aplicativos na Play Store.
     ],
   ),
   EnterprisesModel(
+    name: 'B2ML Sistemas',
+    description: '''
+Projeto de aplicativo de entrega
+Nesse projeto, trabalhei utilizando o Flutter e dart para consumir uma API par realizar as telas e executar as funcionalidades desejadas pelo cliente.
+Características do projeto:
+Gerenciamento de estado BLoC; Diferenciação de ambientes com Flavor; Organização de arquivos via modulos; Wireframes realizados pelo Figma; Uso de localização do celular e endereço por meio de latitude e longitude; e diversidades de packages para adequação do código.
+''',
+    path: 'b2ml_sistemas_logo.jpeg',
+    listTechs: [
+      TechModel(svgImage: 'bloc.svg', text: 'BLoC', link: '#'),
+      TechModel(svgImage: 'flavors.svg', text: 'Flavors', link: '#'),
+      TechModel(svgImage: 'gps-funcoes.svg', text: 'GPS', link: '#'),
+      TechModel(svgImage: 'modular-arch.svg', text: 'Modular', link: '#'),
+      TechModel(svgImage: 'unit-test.svg', text: 'Unit Test', link: '#'),
+    ],
+  ),
+
+  EnterprisesModel(
+    name: 'Estudologia',
+    description: '''
+O projeto consistiu em um aplicativo desde o zero de uma plataforma de educação.
+Foram feitas diversas funcionalidades relacionadas ao estudo dos alunos, como autenticação, resolução de questões e de simulado, aula por mensagem, aula gravada por vídeo entre outras funcionalidades.''',
+    path: 'estudologia_logo.jpeg',
+    listTechs: [
+      TechModel(svgImage: 'bloc.svg', text: 'BLoC', link: '#'),
+      TechModel(svgImage: 'cubit.svg', text: 'Cubit', link: '#'),
+      TechModel(svgImage: 'dio.svg', text: 'Dio', link: '#'),
+      TechModel(svgImage: 'publicacoes.svg', text: 'PlayStore', link: '#'),
+      TechModel(svgImage: 'websocket.svg', text: 'WebSocket', link: '#'),
+      TechModel(svgImage: 'video-player.svg', text: 'Video Player', link: '#'),
+      TechModel(svgImage: 'flutter-modular.svg', text: 'Modular', link: '#'),
+      TechModel(svgImage: 'push-notification.svg', text: 'Push Notification', link: '#'),
+    ],
+  ),
+  EnterprisesModel(
     name: 'Mult-e Engenharia Digital',
     description: '''
 Atuei como desenvolvedor multi-tarefas em sistemas legados para criar e ajustar funcionalidades conforme demanda.
@@ -93,37 +128,7 @@ Atividades executadas: atualização de Pascal para Python; ajustes em robôs co
       TechModel(svgImage: 'automatizacao.svg', text: 'Automatização', link: '#'),
     ],
   ),
-  EnterprisesModel(
-    name: 'Estudologia',
-    description: '''
-Desenvolvimento de um aplicativo educacional desde o zero. Funcionalidades desenvolvidas incluíram autenticação, resolução de questões, simulados, aulas via mensagens e vídeo.
-''',
-    path: 'estudologia_logo.jpeg',
-    listTechs: [
-      TechModel(svgImage: 'bloc.svg', text: 'BLoC', link: '#'),
-      TechModel(svgImage: 'cubit.svg', text: 'Cubit', link: '#'),
-      TechModel(svgImage: 'dio.svg', text: 'Dio', link: '#'),
-      TechModel(svgImage: 'publicacoes.svg', text: 'PlayStore', link: '#'),
-      TechModel(svgImage: 'websocket.svg', text: 'WebSocket', link: '#'),
-      TechModel(svgImage: 'video-player.svg', text: 'Video Player', link: '#'),
-      TechModel(svgImage: 'flutter-modular.svg', text: 'Modular', link: '#'),
-      TechModel(svgImage: 'push-notification.svg', text: 'Push Notification', link: '#'),
-    ],
-  ),
-  EnterprisesModel(
-    name: 'B2ML Sistemas',
-    description: '''
-Projeto de aplicativo de entrega utilizando Flutter e Dart. Consumo de API para construção das telas e funcionalidades.
-''',
-    path: 'b2ml_sistemas_logo.jpeg',
-    listTechs: [
-      TechModel(svgImage: 'bloc.svg', text: 'BLoC', link: '#'),
-      TechModel(svgImage: 'flavors.svg', text: 'Flavors', link: '#'),
-      TechModel(svgImage: 'gps-funcoes.svg', text: 'GPS', link: '#'),
-      TechModel(svgImage: 'modular-arch.svg', text: 'Modular', link: '#'),
-      TechModel(svgImage: 'unit-test.svg', text: 'Unit Test', link: '#'),
-    ],
-  ),
+
   EnterprisesModel(
     name: 'Projeto de Mestrado',
     description: '''
