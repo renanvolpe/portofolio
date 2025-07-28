@@ -1,7 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../controllers/home_controller.dart';
 import '../../utils/app_color.dart';
@@ -10,24 +7,21 @@ import '../../utils/app_utils.dart';
 import '../../utils/hover_tap_widget.dart';
 import '../../utils/hoverable_mixin.dart';
 
-class TechWidget extends StatefulWidget {
-  const TechWidget({
+class StackWidget extends StatefulWidget {
+  const StackWidget({
     super.key,
     required this.techModel,
-    this.isToUseImage = true,
   });
   final TechModel techModel;
-  final bool isToUseImage;
 
   @override
-  State<TechWidget> createState() => _TechWidgetState();
+  State<StackWidget> createState() => _StackWidgetState();
 }
 
-class _TechWidgetState extends State<TechWidget> with HoverableMixin {
+class _StackWidgetState extends State<StackWidget> with HoverableMixin {
   @override
   Widget build(BuildContext context) {
     return HoverTapWidget(
-      onTap: () => launchUrl(Uri.parse(widget.techModel.link)),
       onHover: handleHover,
       child: AnimatedContainer(
         duration: AppUtils.fast,
@@ -44,16 +38,12 @@ class _TechWidgetState extends State<TechWidget> with HoverableMixin {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
-           if(widget.isToUseImage) SvgPicture.asset(
-              'assets/${widget.techModel.svgImage}',
-              width: 20,
-              height: 20,
-              semanticsLabel: widget.techModel.svgImage,
-            ),
             SizedBox(width: 3),
             Text(
               widget.techModel.text,
-              style: AppTextStyle.textMd,
+              style: AppTextStyle.textMd.copyWith(
+                color: isHovered ? AppColors.gray200 : AppColors.gray300,
+              ),
             ),
           ],
         ),

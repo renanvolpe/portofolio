@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart' show MasonryGridView;
+import 'package:portifolio/widgets/shared/stack_widget.dart';
 
+import '../../controllers/home_controller.dart';
 import '../../utils/app_color.dart';
 import '../../utils/app_text_tyle.dart';
 import '../../utils/app_utils.dart';
@@ -12,6 +15,8 @@ class WorksMadeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.sizeOf(context).width;
+    final double spacing = 20;
+    final int lengthEachLine = 3;
     return SizedBox(
       width: width * 0.7,
       child: Column(
@@ -22,74 +27,81 @@ class WorksMadeWidget extends StatelessWidget {
           ),
           SizedBox(height: 10),
           Text(
-            "Veja os projetos em destaque",
+            "Veja as empresas em que trabalhei",
             style: AppTextStyle.titleMd,
           ),
           SizedBox(height: 40),
           LayoutBuilder(
-            builder: (context, constrains) {
-              double spacing = 20;
-              int lengthEachLine = 3;
-              return Wrap(
-                spacing: spacing,
-                runSpacing: spacing,
-                alignment: WrapAlignment.spaceBetween,
-                runAlignment: WrapAlignment.spaceEvenly,
-                children: [
-                  for (int i = 0; i < lengthEachLine * 2; i++)
-                    Container(
-                      height: 260,
-                      width: (constrains.maxWidth - (spacing * 2)) / lengthEachLine,
-                      padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: AppColors.gray400,
-                        borderRadius: AppUtils.borderRadiusS,
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
+            builder: (context, constraints) {
+              final crossAxisCount = lengthEachLine;
+              final spacing = 16.0;
+
+              return MasonryGridView.count(
+                crossAxisCount: crossAxisCount,
+                mainAxisSpacing: spacing,
+                crossAxisSpacing: spacing,
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(), // if inside scroll view
+                itemCount: listEnterPriseModel.length,
+                itemBuilder: (context, i) {
+                  final item = listEnterPriseModel[i];
+
+                  return Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: AppColors.gray400,
+                      borderRadius: AppUtils.borderRadiusS,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ClipRRect(
                           borderRadius: AppUtils.borderRadiusS,
+                          child: Image.asset(
+                            'assets/${item.path}',
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                            height: 150,
+                          ),
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ClipRRect(
-                              borderRadius: AppUtils.borderRadiusS,
-                              child: Image.asset('assets/Thumbnail_Project-0${i + 1}.png'),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 6),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Title",
-                                    style: AppTextStyle.titleSm,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: Text(
-                                          "Rede social onde as pessoas mostram os registros de suas viagens pelo mundo",
-                                          style: AppTextStyle.textSm,
-                                          maxLines: 3,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 6),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(item.name, style: AppTextStyle.titleSm),
+                              const SizedBox(height: 4),
+                              Text(
+                                item.description,
+                                style: AppTextStyle.textSm,
+                                textAlign: TextAlign.justify,
                               ),
-                            ),
+                            ],
+                          ),
+                        ),
+                        Text("Stacks trabalhadas", style: AppTextStyle.titleSm),
+                        const SizedBox(height: 10),
+                        Wrap(
+                          spacing: 10,
+                          runSpacing: 10,
+                          alignment: WrapAlignment.start,
+                          children: [
+                            for (final tech in item.listTechs) StackWidget(techModel: tech),
                           ],
                         ),
-                      ),
+                      ],
                     ),
-                ],
+                  );
+                },
               );
             },
           ),
         ],
       ),
     );
+  }
+
+  _calculateRowSize(constraints, spacing) {
+    return constraints.maxWidth - (spacing * 2);
   }
 }
