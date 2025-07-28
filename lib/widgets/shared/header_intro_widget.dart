@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../controllers/home_controller.dart';
+import '../../controllers/mocks/tech_model.dart';
 import '../../utils/app_text_tyle.dart';
 import 'tech_widget.dart';
 
@@ -54,10 +54,7 @@ class HeaderIntroWidget extends StatelessWidget {
               Wrap(
                 spacing: 15,
                 children: [
-                  for (int i = 0; i < listTechsModel.length; i++)
-                    TechWidget(
-                      techModel: listTechsModel[i]
-                    ),
+                  for (int i = 0; i < listTechsModel.length; i++) TechWidget(techModel: listTechsModel[i]),
                 ],
               ),
             ],

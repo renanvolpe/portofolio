@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart' show MasonryGridView;
 import 'package:portifolio/widgets/shared/stack_widget.dart';
 
-import '../../controllers/home_controller.dart';
+import '../../controllers/mocks/enterprises_model.dart';
 import '../../utils/app_color.dart';
 import '../../utils/app_text_tyle.dart';
 import '../../utils/app_utils.dart';

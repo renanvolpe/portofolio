@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../controllers/home_controller.dart';
+import '../../controllers/mocks/stacks_model.dart';
 import '../../utils/app_color.dart';
 import '../../utils/app_text_tyle.dart';
 import '../../utils/app_utils.dart';
-
-
 
 class StacksWidget extends StatelessWidget {
   const StacksWidget({super.key, required this.height, required this.maxWidth, required this.stack});

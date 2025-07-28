@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../controllers/home_controller.dart';
+import '../../controllers/mocks/tech_model.dart';
 import '../../utils/app_color.dart';
 import '../../utils/app_text_tyle.dart';
 import '../../utils/app_utils.dart';

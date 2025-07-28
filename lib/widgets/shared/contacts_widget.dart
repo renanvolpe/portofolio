@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../controllers/home_controller.dart';
+import '../../controllers/mocks/social_media_model.dart';
 import '../../utils/app_text_tyle.dart';
 import 'social_media_widget.dart';
-
 
 class ContactsWidget extends StatelessWidget {
   const ContactsWidget({
@@ -39,9 +38,8 @@ class ContactsWidget extends StatelessWidget {
                 style: AppTextStyle.textMd,
               ),
               SizedBox(height: 40),
-    
-              for (int i = 0; i < listSocialMedia.length; i++)
-                SocialMediaWidget(width: width, i: i),
+
+              for (int i = 0; i < listSocialMedia.length; i++) SocialMediaWidget(width: width, i: i),
             ],
           ),
         ),
