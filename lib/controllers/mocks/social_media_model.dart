@@ -12,7 +12,7 @@ class SocialMediaModel {
 var listSocialMedia = [
   SocialMediaModel(iconPath: 'assets/Vector-0.png', text: "LinkedIn", link: 'https://www.linkedin.com/in/renanvolpe/'),
   SocialMediaModel(
-    iconPath: 'assets/Whatsapp-logo-vetor.png',
+    iconPath: 'assets/Vector-1.png',
     text: "WhatsApp",
     link: 'https://api.whatsapp.com/send?phone=5512997108329',
   ),
