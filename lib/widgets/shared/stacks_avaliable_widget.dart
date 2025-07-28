@@ -18,13 +18,14 @@ class StacksAvaliableWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height * 0.6,
+      height: height * 0.8,
       decoration: BoxDecoration(
         color: AppColors.gray600,
       ),
       child: SizedBox(
         child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(height: height * 0.1),
               Text(

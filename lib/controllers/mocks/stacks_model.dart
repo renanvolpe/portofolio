@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../utils/app_color.dart';
@@ -14,7 +13,6 @@ class StacksModel {
   });
 }
 
-
 var listStacksModel = [
   StacksModel(
     icon: Icon(
@@ -22,8 +20,9 @@ var listStacksModel = [
       color: AppColors.purple,
       size: 50,
     ),
-    title: 'Websites e Aplicativos',
-    text: 'Desenvolvimento de interfaces',
+    title: 'Aplicativos Mobile',
+    text:
+        'Desenvolvimento de aplicativos de alta performance para Android e iOS, com foco em usabilidade, escalabilidade e experiência do usuário.',
   ),
   StacksModel(
     icon: Icon(
@@ -31,8 +30,9 @@ var listStacksModel = [
       color: AppColors.yellow,
       size: 50,
     ),
-    title: 'API e banco de dados',
-    text: 'Criação de serviços do sistema ',
+    title: 'Sistemas Web',
+    text:
+        'Criação de aplicações web modernas e responsivas, integrando funcionalidades dinâmicas com APIs e bancos de dados, voltadas para desempenho e segurança.',
   ),
   StacksModel(
     icon: Icon(
@@ -40,7 +40,8 @@ var listStacksModel = [
       color: AppColors.green,
       size: 50,
     ),
-    title: 'DevOps',
-    text: 'Gestão e infraestrutura da aplicação',
+    title: 'Manutenção de Softwares',
+    text:
+        'Aprimoramento e correção de sistemas existentes, garantindo estabilidade, otimização de código, atualizações e evolução contínua de projetos.',
   ),
 ];

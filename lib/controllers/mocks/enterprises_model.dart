@@ -1,5 +1,4 @@
 
-import '../home_controller.dart';
 import 'tech_model.dart';
 
 class EnterprisesModel {

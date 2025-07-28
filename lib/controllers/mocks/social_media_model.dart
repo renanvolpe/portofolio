@@ -9,10 +9,13 @@ class SocialMediaModel {
   });
 }
 
-
 var listSocialMedia = [
-  SocialMediaModel(iconPath: 'assets/Vector-0.png', text: "LinkedIn", link: ''),
-  SocialMediaModel(iconPath: 'assets/Vector-1.png', text: "Instagram", link: ''),
-  SocialMediaModel(iconPath: 'assets/Vector-2.png', text: "GitHub", link: ''),
-  SocialMediaModel(iconPath: 'assets/Vector-3.png', text: "E-mail", link: ''),
+  SocialMediaModel(iconPath: 'assets/Vector-0.png', text: "LinkedIn", link: 'https://www.linkedin.com/in/renanvolpe/'),
+  SocialMediaModel(
+    iconPath: 'assets/Whatsapp-logo-vetor.png',
+    text: "WhatsApp",
+    link: 'https://api.whatsapp.com/send?phone=5512997108329',
+  ),
+  SocialMediaModel(iconPath: 'assets/Vector-2.png', text: "GitHub", link: 'https://github.com/renanvolpe'),
+  SocialMediaModel(iconPath: 'assets/Vector-3.png', text: "E-mail", link: 'https://renanvolpe067@gmail.com'),
 ];

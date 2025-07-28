@@ -21,7 +21,6 @@ class StacksWidget extends StatelessWidget {
       ),
       padding: EdgeInsets.all(13),
       width: maxWidth * 0.3,
-      height: height * 0.225,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,

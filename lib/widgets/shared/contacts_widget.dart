@@ -39,7 +39,11 @@ class ContactsWidget extends StatelessWidget {
               ),
               SizedBox(height: 40),
 
-              for (int i = 0; i < listSocialMedia.length; i++) SocialMediaWidget(width: width, i: i),
+              for (int i = 0; i < listSocialMedia.length; i++)
+                SocialMediaWidget(
+                  width: width,
+                  socialMediaModel: listSocialMedia[i],
+                ),
             ],
           ),
         ),
