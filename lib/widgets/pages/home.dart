@@ -59,7 +59,7 @@ class Home extends HookWidget {
         child: Column(
           children: [
             // HEADER
-            HeaderIntroWidget(height: height, width: width),
+            HeaderIntroWidget(),
 
             const Icon(Icons.keyboard_double_arrow_down_rounded, color: AppColors.gray300, size: 60),
             SizedBox(height: height * 0.05),
@@ -80,7 +80,7 @@ class Home extends HookWidget {
               opacity: showStacks.value ? 1.0 : 0.0,
               duration: const Duration(milliseconds: 1500),
               curve: Curves.easeOut,
-              child: StacksAvaliableWidget(height: height, width: width),
+              child: StacksAvaliableWidget(),
             ),
             SizedBox(height: height * 0.15),
 
@@ -90,7 +90,7 @@ class Home extends HookWidget {
               opacity: showContacts.value ? 1.0 : 0.0,
               duration: const Duration(milliseconds: 1500),
               curve: Curves.easeOut,
-              child: ContactsWidget(height: height, width: width),
+              child: ContactsWidget(),
             ),
             SizedBox(height: height * 0.15),
           ],

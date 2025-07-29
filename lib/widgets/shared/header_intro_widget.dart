@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart' show AutoSizeText;
 import 'package:flutter/material.dart';
 
 import '../../controllers/mocks/tech_model.dart';
@@ -5,62 +6,74 @@ import '../../utils/app_text_tyle.dart';
 import 'tech_widget.dart';
 
 class HeaderIntroWidget extends StatelessWidget {
-  const HeaderIntroWidget({
-    super.key,
-    required this.height,
-    required this.width,
-  });
-
-  final double height;
-  final double width;
+  const HeaderIntroWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height * 0.8,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/Background_Intro.png'),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: Center(
-        child: SizedBox(
-          width: width * 0.65,
-          child: Column(
-            children: [
-              SizedBox(height: height * 0.075),
-              CircleAvatar(
-                backgroundImage: Image.asset('assets/fotoPerfil.jpg').image,
-                radius: 50,
-              ),
-              SizedBox(height: height * 0.05),
-              Text(
-                "Hello World! Meu nome é Renan Volpe e sou",
-                style: AppTextStyle.subtitle,
-              ),
-              SizedBox(height: height * 0.05),
-              Text(
-                "Desenvolvedor Web e Mobile",
-                style: AppTextStyle.titleLg,
-              ),
-              SizedBox(height: height * 0.05),
-              Text(
-                "Transformo necessidades em aplicações reais, evolventes e funcionais. Desenvolvo sistemas através da minha paixão pela tecnologia, contribuindo com soluções inovadoras e eficazes para desafios complexos.",
-                textAlign: TextAlign.center,
-                style: AppTextStyle.textSm,
-              ),
-              SizedBox(height: height * 0.05),
-              Wrap(
-                spacing: 15,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isMobile = constraints.maxWidth < 600;
+        final isTablet = constraints.maxWidth < 1024;
+
+        final maxWidth = isMobile
+            ? constraints.maxWidth * 0.9
+            : isTablet
+            ? constraints.maxWidth * 0.75
+            : constraints.maxWidth * 0.6;
+
+        return Container(
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/Background_Intro.png'),
+              fit: BoxFit.fitWidth,
+            ),
+          ),
+          padding: const EdgeInsets.symmetric(vertical: 50),
+          child: Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: maxWidth),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  for (int i = 0; i < listTechsModel.length; i++) TechWidget(techModel: listTechsModel[i]),
+                  const CircleAvatar(
+                    backgroundImage: AssetImage('assets/fotoPerfil.jpg'),
+                    radius: 50,
+                  ),
+                  const SizedBox(height: 30),
+                  AutoSizeText(
+                    "Hello World! Meu nome é Renan Volpe e sou",
+                    style: AppTextStyle.subtitle,
+                    maxLines: 3,
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 20),
+                  AutoSizeText(
+                    "Desenvolvedor Web e Mobile",
+                    maxLines: 2,
+                    style: AppTextStyle.titleLg,
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 20),
+                  AutoSizeText(
+                    "Transformo necessidades em aplicações reais, envolventes e funcionais. Desenvolvo sistemas através da minha paixão pela tecnologia, contribuindo com soluções inovadoras e eficazes para desafios complexos.",
+                    textAlign: TextAlign.center,
+                    style: AppTextStyle.textSm,
+                    maxLines: 10,
+                  ),
+                  const SizedBox(height: 30),
+                  Wrap(
+                    spacing: 15,
+                    runSpacing: 10,
+                    alignment: WrapAlignment.center,
+                    children: listTechsModel.map((tech) => TechWidget(techModel: tech)).toList(),
+                  ),
                 ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

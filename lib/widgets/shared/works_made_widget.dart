@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart' show AutoSizeText;
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart' show MasonryGridView;
 import 'package:portifolio/widgets/shared/stack_widget.dart';
@@ -9,45 +10,42 @@ import '../../utils/app_utils.dart';
 import 'image_works_widget.dart';
 
 class WorksMadeWidget extends StatelessWidget {
-  const WorksMadeWidget({
-    super.key,
-  });
+  const WorksMadeWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.sizeOf(context).width;
-    final int lengthEachLine = 3;
-    return SizedBox(
-      width: width * 0.7,
-      child: Column(
-        children: [
-          Text(
-            "Meus trabalhos",
-            style: AppTextStyle.subtitle.copyWith(color: AppColors.red),
-          ),
-          SizedBox(height: 10),
-          Text(
-            "Veja as empresas em que trabalhei",
-            style: AppTextStyle.titleMd,
-          ),
-          SizedBox(height: 40),
-          LayoutBuilder(
-            builder: (context, constraints) {
-              final crossAxisCount = lengthEachLine;
-              final spacing = 16.0;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final maxWidth = constraints.maxWidth;
 
-              return MasonryGridView.count(
-                crossAxisCount: crossAxisCount,
-                mainAxisSpacing: spacing,
-                crossAxisSpacing: spacing,
+        final horizontalPadding = maxWidth > 900 ? 80.0 : 20.0;
+
+        return Padding(
+          padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                "Meus trabalhos",
+                style: AppTextStyle.subtitle.copyWith(color: AppColors.red),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                "Veja as empresas em que trabalhei",
+                style: AppTextStyle.titleMd,
+              ),
+              const SizedBox(height: 40),
+              MasonryGridView.count(
+                crossAxisCount: _calculateCrossAxisCount(context),
+                mainAxisSpacing: 20,
+                crossAxisSpacing: 20,
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: listEnterPriseModel.length,
                 itemBuilder: (context, i) {
                   final item = listEnterPriseModel[i];
-
                   return Container(
-                    padding: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       color: AppColors.gray400,
                       borderRadius: AppUtils.borderRadiusS,
@@ -56,44 +54,48 @@ class WorksMadeWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ImageWorksWidget(path: item.path),
+                        const SizedBox(height: 10),
                         Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 6),
+                          padding: const EdgeInsets.symmetric(horizontal: 6),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(item.name, style: AppTextStyle.titleSm),
+                              AutoSizeText(item.name, style: AppTextStyle.titleSm),
                               const SizedBox(height: 4),
-                              Text(
+                              AutoSizeText(
                                 item.description,
                                 style: AppTextStyle.textSm,
                                 textAlign: TextAlign.justify,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 5,
                               ),
                             ],
                           ),
                         ),
-                        Text(
-                          "Stacks trabalhadas",
-                          style: AppTextStyle.titleSm,
-                          textAlign: TextAlign.center,
-                        ),
+                        const SizedBox(height: 12),
+                        Text("Stacks trabalhadas", style: AppTextStyle.titleSm),
                         const SizedBox(height: 10),
                         Wrap(
                           spacing: 10,
                           runSpacing: 10,
-                          alignment: WrapAlignment.start,
-                          children: [
-                            for (final tech in item.listTechs) StackWidget(techModel: tech),
-                          ],
+                          children: item.listTechs.map((tech) => StackWidget(techModel: tech)).toList(),
                         ),
                       ],
                     ),
                   );
                 },
-              );
-            },
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
+  int _calculateCrossAxisCount(BuildContext context) {
+  final width = MediaQuery.of(context).size.width;
+  if (width >= 1200) return 3;
+  if (width >= 800) return 2;
+  return 1;
+}
+
 }
