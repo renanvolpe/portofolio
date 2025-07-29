@@ -1,21 +1,17 @@
-# portifolio
+# 💼 Portfólio Flutter - Versão 0
 
-A new Flutter project.
+Este é a ver meu portfólio profissional feito com Flutter, com foco em performance, animações com Flutter Hooks e design moderno.
+Está em versão inicial para Web, link: https://portofolio-xtj2.vercel.app/#/home
 
-## Getting Started
+## ✨ Contato
 
-This project is a starting point for a Flutter application.
+Aqui estão minhas redes e formas de contato apresentadas no portfólio:
 
-A few resources to get you started if this is your first Flutter project:
+- 📎 **LinkedIn**: [https://www.linkedin.com/in/renanvolpe/](https://www.linkedin.com/in/renanvolpe/)
+- 💬 **WhatsApp**: [https://api.whatsapp.com/send?phone=5512997108329](https://api.whatsapp.com/send?phone=5512997108329)
+- 💻 **GitHub**: [https://github.com/renanvolpe](https://github.com/renanvolpe)
+- ✉️ **E-mail**: [renanvolpe067@gmail.com](mailto:renanvolpe067@gmail.com)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-
-https://www.figma.com/design/Fz5KEIdxCsXyI8Hzt6pF8R/Portfolio-Dev--Community-?node-id=3-376&p=f&t=HYdECK5p4wRQjdSw-0
-
-https://www.figma.com/design/m7watzVMch164Fr7wVs1p8/Developer-Portfolio-Design--Community-?node-id=0-1&p=f&t=QHm359LTkfQ6SnpY-0
+Feito com Flutter e dedicação 🚀
