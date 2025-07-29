@@ -59,7 +59,7 @@ class Home extends HookWidget {
         child: Column(
           children: [
             // HEADER
-            HeaderIntroWidget(height: height, width: width),
+            HeaderIntroWidget(),
 
             const Icon(Icons.keyboard_double_arrow_down_rounded, color: AppColors.gray300, size: 60),
             SizedBox(height: height * 0.05),
