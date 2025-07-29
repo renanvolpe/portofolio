@@ -11,11 +11,11 @@ import '../../utils/hover_tap_widget.dart';
 class SocialMediaWidget extends StatefulWidget {
   const SocialMediaWidget({
     super.key,
-    required this.width,
+    required this.maxWidth,
     required this.socialMediaModel,
   });
 
-  final double width;
+  final double maxWidth;
   final SocialMediaModel socialMediaModel;
 
   @override
@@ -25,25 +25,38 @@ class SocialMediaWidget extends StatefulWidget {
 class _SocialMediaWidgetState extends State<SocialMediaWidget> with HoverableMixin {
   @override
   Widget build(BuildContext context) {
+    final double itemWidth = widget.maxWidth > 1000
+        ? 400
+        : widget.maxWidth > 600
+            ? widget.maxWidth * 0.6
+            : widget.maxWidth * 0.85;
+
     return HoverTapWidget(
       onHover: handleHover,
       onTap: () async => await _launchCustomUrl(widget.socialMediaModel.link),
       child: AnimatedContainer(
         duration: AppUtils.fast,
-        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-        margin: EdgeInsets.symmetric(vertical: 10),
+        width: itemWidth,
+        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
         decoration: BoxDecoration(
           color: isHovered ? AppColors.gray600 : AppColors.gray400,
           borderRadius: AppUtils.borderRadiusM,
         ),
-        width: widget.width * 0.4,
         child: Row(
           children: [
-            Image.asset(width: 20, height: 20, widget.socialMediaModel.iconPath),
-            SizedBox(width: 20),
-            Text(widget.socialMediaModel.text, style: AppTextStyle.textMd),
-            Spacer(),
-            Icon(
+            Image.asset(
+              widget.socialMediaModel.iconPath,
+              width: 20,
+              height: 20,
+            ),
+            const SizedBox(width: 20),
+            Expanded(
+              child: Text(
+                widget.socialMediaModel.text,
+                style: AppTextStyle.textMd,
+              ),
+            ),
+            const Icon(
               Icons.chevron_right,
               color: AppColors.gray300,
             ),
@@ -54,13 +67,9 @@ class _SocialMediaWidgetState extends State<SocialMediaWidget> with HoverableMix
   }
 
   Future<void> _launchCustomUrl(String url) async {
-    final Uri uri = Uri.parse(url);
-
+    final uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
-      await launchUrl(
-        uri,
-        mode: LaunchMode.platformDefault,
-      );
+      await launchUrl(uri, mode: LaunchMode.platformDefault);
     } else {
       throw 'Could not launch $url';
     }

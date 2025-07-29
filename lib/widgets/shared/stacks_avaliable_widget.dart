@@ -6,61 +6,58 @@ import '../../utils/app_text_tyle.dart';
 import 'stacks_widget.dart';
 
 class StacksAvaliableWidget extends StatelessWidget {
-  const StacksAvaliableWidget({
-    super.key,
-    required this.height,
-    required this.width,
-  });
-
-  final double height;
-  final double width;
+  const StacksAvaliableWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height * 0.8,
-      decoration: BoxDecoration(
-        color: AppColors.gray600,
-      ),
-      child: SizedBox(
-        child: Center(
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final maxWidth = constraints.maxWidth;
+
+        final horizontalPadding = maxWidth > 1000 ? 80.0 : 20.0;
+
+        return Container(
+          color: AppColors.gray600,
+          width: double.infinity,
+          padding: EdgeInsets.symmetric(vertical: 60, horizontal: horizontalPadding),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: height * 0.1),
               Text(
                 "Meus Serviços",
                 style: AppTextStyle.subtitle.copyWith(color: AppColors.red),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               Text(
                 "Como posso ajudar o seu negócio",
                 style: AppTextStyle.titleMd,
               ),
-              SizedBox(height: 25),
-              SizedBox(
-                width: width * 0.7,
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        for (int i = 0; i < listStacksModel.length; i++)
-                          StacksWidget(
-                            height: height,
-                            maxWidth: constraints.maxWidth,
-                            stack: listStacksModel[i],
-                          ),
-                      ],
+              const SizedBox(height: 40),
+              Wrap(
+                spacing: 30,
+                runSpacing: 30,
+                alignment: WrapAlignment.center,
+                children: listStacksModel.map(
+                  (stack) {
+                    final double itemWidth = maxWidth > 1200
+                        ? 300
+                        : maxWidth > 900
+                        ? 250
+                        : maxWidth > 600
+                        ? maxWidth / 2.2
+                        : maxWidth * 0.9;
+
+                    return StacksWidget(
+                      maxWidth: itemWidth,
+                      stack: stack,
                     );
                   },
-                ),
+                ).toList(),
               ),
-              SizedBox(height: height * 0.1),
             ],
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

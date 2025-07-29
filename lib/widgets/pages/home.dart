@@ -80,7 +80,7 @@ class Home extends HookWidget {
               opacity: showStacks.value ? 1.0 : 0.0,
               duration: const Duration(milliseconds: 1500),
               curve: Curves.easeOut,
-              child: StacksAvaliableWidget(height: height, width: width),
+              child: StacksAvaliableWidget(),
             ),
             SizedBox(height: height * 0.15),
 
@@ -90,7 +90,7 @@ class Home extends HookWidget {
               opacity: showContacts.value ? 1.0 : 0.0,
               duration: const Duration(milliseconds: 1500),
               curve: Curves.easeOut,
-              child: ContactsWidget(height: height, width: width),
+              child: ContactsWidget(),
             ),
             SizedBox(height: height * 0.15),
           ],

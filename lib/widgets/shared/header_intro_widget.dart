@@ -26,7 +26,7 @@ class HeaderIntroWidget extends StatelessWidget {
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/Background_Intro.png'),
-              fit: BoxFit.scaleDown,
+              fit: BoxFit.fitWidth,
             ),
           ),
           padding: const EdgeInsets.symmetric(vertical: 50),
