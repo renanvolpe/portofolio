@@ -13,7 +13,6 @@ class Home extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
-    final width = MediaQuery.sizeOf(context).width;
     final scrollController = useScrollController();
 
     final worksKey = useMemoized(() => GlobalKey());
