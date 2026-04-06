@@ -25,12 +25,13 @@ class _WorkCardWidgetState extends State<WorkCardWidget> with HoverableMixin {
       onExit: (_) => handleHover(false),
       child: AnimatedContainer(
         duration: AppUtils.normal,
+        curve: Curves.easeInOut,
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: isHovered ? AppColors.gray500 : AppColors.gray400,
           borderRadius: AppUtils.borderRadiusS,
           border: Border.all(
-            color: isHovered ? AppColors.gray300.withAlpha(100) : Colors.transparent,
+            color: isHovered ? AppColors.gray300.withAlpha(100) : AppColors.gray300.withAlpha(0),
             width: 1,
           ),
         ),

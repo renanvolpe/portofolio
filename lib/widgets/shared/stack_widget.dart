@@ -25,12 +25,13 @@ class _StackWidgetState extends State<StackWidget> with HoverableMixin {
       onHover: handleHover,
       child: AnimatedContainer(
         duration: AppUtils.fast,
+        curve: Curves.easeInOut,
         decoration: BoxDecoration(
           borderRadius: AppUtils.borderRadiusL,
           color: isHovered ? AppColors.gray500 : AppColors.gray400,
           border: Border.all(
             width: 1,
-            color: isHovered ? AppColors.gray400 : AppColors.gray500,
+            color: isHovered ? AppColors.gray300.withAlpha(50) : AppColors.gray300.withAlpha(0),
           ),
         ),
         padding: EdgeInsets.symmetric(horizontal: 12, vertical: 7),

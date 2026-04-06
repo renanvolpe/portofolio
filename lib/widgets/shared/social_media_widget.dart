@@ -36,11 +36,16 @@ class _SocialMediaWidgetState extends State<SocialMediaWidget> with HoverableMix
       onTap: () async => await _launchCustomUrl(widget.socialMediaModel.link),
       child: AnimatedContainer(
         duration: AppUtils.fast,
+        curve: Curves.easeInOut,
         width: itemWidth,
         padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
         decoration: BoxDecoration(
           color: isHovered ? AppColors.gray600 : AppColors.gray400,
           borderRadius: AppUtils.borderRadiusM,
+          border: Border.all(
+            color: isHovered ? AppColors.gray300.withAlpha(50) : AppColors.gray300.withAlpha(0),
+            width: 1,
+          ),
         ),
         child: Row(
           children: [
