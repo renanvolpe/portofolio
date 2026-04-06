@@ -97,10 +97,10 @@ class HeaderIntroWidget extends HookWidget {
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [
-                          Colors.transparent,
+                          AppColors.gray100,
                           AppColors.red,
                           AppColors.purple,
-                          Colors.transparent,
+                          AppColors.gray100,
                         ],
                         stops: [
                           shimmerAnimation - 0.3,

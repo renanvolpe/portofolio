@@ -164,10 +164,10 @@ packages:
     dependency: "direct main"
     description:
       name: google_fonts
-      sha256: ba03d03bcaa2f6cb7bd920e3b5027181db75ab524f8891c8bc3aa603885b8055
+      sha256: db9df7a5898d894eeda4c78143f35c30a243558be439518972366880b80bf88e
       url: "https://pub.dev"
     source: hosted
-    version: "6.3.3"
+    version: "8.0.2"
   hooks:
     dependency: transitive
     description:
@@ -288,14 +288,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "9.3.0"
-  package_config:
-    dependency: transitive
-    description:
-      name: package_config
-      sha256: f096c55ebb7deb7e384101542bfba8c52696c1b56fca2eb62827989ef2353bbc
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.2.0"
   path:
     dependency: transitive
     description:
@@ -324,10 +316,10 @@ packages:
     dependency: transitive
     description:
       name: path_provider_android
-      sha256: "914a07484c4380e572998d30486e77e0d9cd2faec72fee268086d07bf7f302c9"
+      sha256: "149441ca6e4f38193b2e004c0ca6376a3d11f51fa5a77552d8bd4d2b0c0912ba"
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.0"
+    version: "2.2.23"
   path_provider_foundation:
     dependency: transitive
     description:
@@ -580,7 +572,7 @@ packages:
       sha256: "971043b3a0d3da28727e40ed3e0b5d18b742fa5a68665cca88e74b7876d5e025"
       url: "https://pub.dev"
     source: hosted
-    version: "6.6.1"
+    version: "6.5.0"
   yaml:
     dependency: transitive
     description:

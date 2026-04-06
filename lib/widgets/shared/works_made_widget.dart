@@ -1,13 +1,10 @@
-import 'package:auto_size_text/auto_size_text.dart' show AutoSizeText;
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart' show MasonryGridView;
-import 'package:portifolio/widgets/shared/stack_widget.dart';
+import 'package:portifolio/widgets/shared/work_card_widget.dart';
 
 import '../../controllers/mocks/enterprises_model.dart';
 import '../../utils/app_color.dart';
 import '../../utils/app_text_tyle.dart';
-import '../../utils/app_utils.dart';
-import 'image_works_widget.dart';
 
 class WorksMadeWidget extends StatelessWidget {
   const WorksMadeWidget({super.key});
@@ -44,45 +41,7 @@ class WorksMadeWidget extends StatelessWidget {
                 itemCount: listEnterPriseModel.length,
                 itemBuilder: (context, i) {
                   final item = listEnterPriseModel[i];
-                  return Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: AppColors.gray400,
-                      borderRadius: AppUtils.borderRadiusS,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ImageWorksWidget(path: item.path),
-                        const SizedBox(height: 10),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 6),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              AutoSizeText(item.name, style: AppTextStyle.titleSm),
-                              const SizedBox(height: 4),
-                              AutoSizeText(
-                                item.description,
-                                style: AppTextStyle.textSm,
-                                textAlign: TextAlign.justify,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 5,
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 12),
-                        Text("Stacks trabalhadas", style: AppTextStyle.titleSm),
-                        const SizedBox(height: 10),
-                        Wrap(
-                          spacing: 10,
-                          runSpacing: 10,
-                          children: item.listTechs.map((tech) => StackWidget(techModel: tech)).toList(),
-                        ),
-                      ],
-                    ),
-                  );
+                  return WorkCardWidget(item: item);
                 },
               ),
             ],
