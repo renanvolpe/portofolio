@@ -1,15 +1,45 @@
 import 'package:auto_size_text/auto_size_text.dart' show AutoSizeText;
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../controllers/mocks/tech_model.dart';
 import '../../utils/app_text_tyle.dart';
+import '../../utils/app_color.dart';
 import 'tech_widget.dart';
 
-class HeaderIntroWidget extends StatelessWidget {
+class HeaderIntroWidget extends HookWidget {
   const HeaderIntroWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Continuous floating animation
+    final floatController = useAnimationController(
+      duration: const Duration(seconds: 3),
+    );
+
+    // Continuous shimmer animation for text
+    final shimmerController = useAnimationController(
+      duration: const Duration(seconds: 4),
+    );
+
+    useEffect(() {
+      floatController.repeat(reverse: true);
+      shimmerController.repeat();
+      return null;
+    }, []);
+
+    final floatAnimation = useAnimation(
+      Tween<double>(begin: 0, end: 12).animate(
+        CurvedAnimation(parent: floatController, curve: Curves.easeInOut),
+      ),
+    );
+
+    final shimmerAnimation = useAnimation(
+      Tween<double>(begin: -1.0, end: 2.0).animate(
+        CurvedAnimation(parent: shimmerController, curve: Curves.linear),
+      ),
+    );
+
     return LayoutBuilder(
       builder: (context, constraints) {
         final isMobile = constraints.maxWidth < 600;
@@ -36,9 +66,24 @@ class HeaderIntroWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const CircleAvatar(
-                    backgroundImage: AssetImage('assets/fotoPerfil.jpg'),
-                    radius: 50,
+                  Transform.translate(
+                    offset: Offset(0, -floatAnimation),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: AppColors.blue.withAlpha(50),
+                            blurRadius: 40,
+                            spreadRadius: 10,
+                          ),
+                        ],
+                      ),
+                      child: const CircleAvatar(
+                        backgroundImage: AssetImage('assets/fotoPerfil.jpg'),
+                        radius: 50,
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 30),
                   AutoSizeText(
@@ -48,11 +93,32 @@ class HeaderIntroWidget extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 20),
-                  AutoSizeText(
-                    "Desenvolvedor Web e Mobile",
-                    maxLines: 2,
-                    style: AppTextStyle.titleLg,
-                    textAlign: TextAlign.center,
+                  ShaderMask(
+                    shaderCallback: (bounds) {
+                      return LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          AppColors.gray100,
+                          AppColors.red,
+                          AppColors.purple,
+                          AppColors.gray100,
+                        ],
+                        stops: [
+                          shimmerAnimation - 0.3,
+                          shimmerAnimation,
+                          shimmerAnimation + 0.3,
+                          shimmerAnimation + 0.6,
+                        ],
+                      ).createShader(bounds);
+                    },
+                    blendMode: BlendMode.srcIn,
+                    child: AutoSizeText(
+                      "Desenvolvedor Web e Mobile",
+                      maxLines: 2,
+                      style: AppTextStyle.titleLg.copyWith(color: Colors.white),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                   const SizedBox(height: 20),
                   AutoSizeText(
